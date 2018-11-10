@@ -34,7 +34,8 @@ const SuggestionsWrapper = styled.ul`
 
 const StyledLink = styled(Link)`
   display: block;
-  width: 255px;
+  box-sizing: border-box;
+  width: 260px;
   font-size: 20px;
   margin-bottom: 40px;
   position: relative;
@@ -48,7 +49,7 @@ const StyledLink = styled(Link)`
     content: '<';
     display: block;
     position: absolute;
-    left: 20px;
+    left: 30px;
     width: 20px;
     height: 20px;
     background-image: none;
@@ -67,7 +68,7 @@ export class AddBook extends Component {
     if (value.trim().length > 3) {
       this.props.setBookSearch(value.trim());
     }
-    this.setState({ query: value.trim(), isBookSelected: false });
+    this.setState({ query: value, isBookSelected: false });
   };
 
   handleSelectBook = book => {

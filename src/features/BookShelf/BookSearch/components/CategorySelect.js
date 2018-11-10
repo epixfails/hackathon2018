@@ -13,6 +13,7 @@ const Trigger = styled.div`
   padding: 5px 0;
   margin-right: 40px;
   justify-content: flex-end;
+  cursor: pointer;
 `;
 
 const Arrow = styled.span`
@@ -54,6 +55,7 @@ const SelectItem = styled.li`
   width: 162px;
   text-align: right;
   color: ${({ selected }) => (selected ? '#3388e8' : '#252525')};
+  cursor: pointer;
 `;
 
 const getButtonText = selected => {

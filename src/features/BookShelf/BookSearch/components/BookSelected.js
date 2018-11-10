@@ -47,10 +47,13 @@ const BookAuthors = styled.p`
 const ButtonAddBook = styled.button`
   width: 260px;
   height: 50px;
+  outline: none;
   background: #4a76a8;
   border-radius: 25px;
   font-size: 20px;
   color: #fff;
+  border: none;
+  cursor: pointer;
 `;
 
 export const BookSelected = ({

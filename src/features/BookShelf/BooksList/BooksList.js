@@ -8,7 +8,7 @@ const AddBookLink = styled(Link)`
   display: flex;
   width: 220px;
   height: 50px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: right;
   font-size: 20px;
