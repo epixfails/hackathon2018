@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
+import { redirect } from '../../common/utils';
 
 const Wrapper = styled.div`
   background-color: #363d47;
@@ -93,7 +94,7 @@ export const Auth = props => {
     return (
       <Redirect
         to={{
-          pathname: '/home',
+          pathname: '/',
         }}
       />
     );
@@ -109,12 +110,7 @@ export const Auth = props => {
         <LogoBackgroundPicWrapper>
           <LogoBackgroundPic src="img/logo_background.svg" />
         </LogoBackgroundPicWrapper>
-        <ButtonSubmit
-          onClick={() => {
-            props.logInSuccess();
-            props.push('/home');
-          }}
-        >
+        <ButtonSubmit onClick={() => redirect('http://bookex.ru/server/login')}>
           <img src="img/vk_logo.svg" alt="" />
           <ButtonText>Войти через vk</ButtonText>
         </ButtonSubmit>

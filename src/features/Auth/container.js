@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { Auth } from './Auth';
-import { logInSuccess } from './ducks';
 
 const mapDispatchToProps = {
-  logInSuccess,
   push,
 };
 
+const mapStateToProps = state => ({
+  authenticated: state.auth.authenticated,
+});
+
 export const AuthContainer = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Auth);

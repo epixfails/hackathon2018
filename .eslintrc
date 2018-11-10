@@ -1,6 +1,7 @@
 {
   "extends": ["airbnb", "prettier", "prettier/react"],
   "plugins": ["prettier"],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -21,7 +22,8 @@
     "no-underscore-dangle": 0,
     "class-methods-use-this": 0,
     "camelcase": 0,
-    "no-constant-condition": 0
+    "no-constant-condition": 0,
+    "no-static-element-interactions": 0
   },
   "env": {
     "browser": true

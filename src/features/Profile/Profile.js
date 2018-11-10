@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div``;
@@ -14,7 +14,9 @@ const UserPicWrapper = styled.div`
   border-radius: 50%;
   border: 4px solid #fff;
   overflow: hidden;
-  background: url('img/logo.svg');
+  background: url(${({ avatarUrl }) => avatarUrl || '#fff'});
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const UserInfo = styled.div`
@@ -38,19 +40,31 @@ const Sublink = styled.span`
   color: #b5b6b8;
 `;
 
-export const Profile = () => (
-  <Wrapper>
-    <MainInfo>
-      <UserPicWrapper />
-      <UserInfo>
-        <UserName>
-          Zanzo <b>Name</b>
-        </UserName>
-        <UserLink href="https://vk.com/whaaa">
-          <Sublink>https://vk.com/</Sublink>whaaa
-        </UserLink>
-      </UserInfo>
-    </MainInfo>
-    <FriendsList>Друзья в приложении</FriendsList>
-  </Wrapper>
-);
+export class Profile extends Component {
+  componentDidMount() {
+    this.props.fetchProfileData();
+  }
+
+  render() {
+    const {
+      profile: { vkDomain, id, firstname, lastname, avatarUrl },
+    } = this.props;
+    return (
+      <Wrapper>
+        <MainInfo>
+          <UserPicWrapper avatarUrl={avatarUrl} />
+          <UserInfo>
+            <UserName>
+              {firstname} <b>{lastname}</b>
+            </UserName>
+            <UserLink href={`https://vk.com/${vkDomain || id}`}>
+              <Sublink>https://vk.com/</Sublink>
+              {vkDomain || id}
+            </UserLink>
+          </UserInfo>
+        </MainInfo>
+        <FriendsList>Друзья в приложении</FriendsList>
+      </Wrapper>
+    );
+  }
+}

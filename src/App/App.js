@@ -4,29 +4,32 @@ import styled from 'styled-components';
 import { Header } from './components/Header';
 import { NavigationPanel } from './components/NavigationPanel';
 import { Profile } from '../features/Profile';
+import { BookShelf } from '../features/BookShelf';
 
 const MainLayout = styled.div`
   width: 1200px;
   margin: auto;
 `;
 
-export const App = ({ authenticated }) => {
-  if (!authenticated) {
+export const App = props => {
+  if (!props.authenticated) {
     return (
       <Redirect
         to={{
-          pathname: '/',
+          pathname: '/login',
         }}
       />
     );
   }
+
   return (
     <MainLayout>
       <Header />
       <NavigationPanel />
       <Switch>
-        <Route exact path="/profile" component={Profile} />
+        <Route path="/books" component={() => <BookShelf />} />
         <Route path="/deal" component={() => <div>deals</div>} />
+        <Route path="*" component={Profile} />
       </Switch>
     </MainLayout>
   );

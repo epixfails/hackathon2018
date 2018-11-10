@@ -6,7 +6,7 @@ export const logInSuccess = payload => ({
 });
 
 const initialState = {
-  authenticated: true,
+  authenticated: false,
 };
 
 export const authReducer = (state = initialState, action) => {

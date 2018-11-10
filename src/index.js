@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { Switch, Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
-import { configureStore } from './store';
+import { configureStore, runSagaMiddleware } from './store';
 import { Auth } from './features/Auth';
 import { App } from './App';
 
@@ -24,6 +24,8 @@ const history = createHistory();
 
 const store = configureStore({}, history);
 
+runSagaMiddleware();
+
 const AppWrap = styled.div`
   margin: auto;
 `;
@@ -34,8 +36,9 @@ const MainApp = () => (
       <GlobalStyle />
       <ConnectedRouter history={history}>
         <Switch>
-          <Route exact path="/" component={Auth} />
+          <Route exact path="/login" component={Auth} />
           <Route path="/:page" component={App} />
+          <Route path="/" component={App} />
         </Switch>
       </ConnectedRouter>
     </AppWrap>

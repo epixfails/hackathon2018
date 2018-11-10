@@ -1,10 +1,15 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
+import createSagaMiddleware from 'redux-saga';
+import cookies from 'js-cookie';
 import { mainReducer } from './mainReducer';
+import { rootSaga } from './rootSaga';
 
-// import createSagaMiddleware from 'redux-saga';
+const accessToken = cookies.get('token');
 
 let store;
+
+const sagaMiddleware = createSagaMiddleware();
 
 export const configureStore = (initState, history) => {
   const initialState = initState || {};
@@ -12,9 +17,14 @@ export const configureStore = (initState, history) => {
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  // const sagaMiddleware = createSagaMiddleware();
+  const middlewares = [routerMiddleware(history), sagaMiddleware];
 
-  const middlewares = [routerMiddleware(history)];
+  if (accessToken) {
+    initialState.auth = {
+      authenticated: true,
+      token: accessToken,
+    };
+  }
 
   store = createStore(
     mainReducer(history),
@@ -24,3 +34,7 @@ export const configureStore = (initState, history) => {
 
   return store;
 };
+
+export function runSagaMiddleware() {
+  sagaMiddleware.run(rootSaga);
+}
