@@ -5,7 +5,7 @@ const Wrapper = styled.div``;
 
 const MainInfo = styled.div`
   display: flex;
-  padding: 0 260px;
+  padding: 60px 260px;
 `;
 
 const UserPicWrapper = styled.div`

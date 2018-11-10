@@ -34,7 +34,7 @@ const MainApp = () => (
       <GlobalStyle />
       <ConnectedRouter history={history}>
         <Switch>
-          <Route exact path="/start" component={Auth} />
+          <Route exact path="/" component={Auth} />
           <Route path="/:page" component={App} />
         </Switch>
       </ConnectedRouter>

@@ -15,7 +15,7 @@ export const App = ({ authenticated }) => {
     return (
       <Redirect
         to={{
-          pathname: '/start',
+          pathname: '/',
         }}
       />
     );

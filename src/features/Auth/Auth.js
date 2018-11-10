@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 
 const Wrapper = styled.div`
   background-color: #363d47;
@@ -97,6 +98,7 @@ export const Auth = props => {
       />
     );
   }
+
   return (
     <Wrapper>
       <InnerContainer>
@@ -116,11 +118,12 @@ export const Auth = props => {
           <img src="img/vk_logo.svg" alt="" />
           <ButtonText>Войти через vk</ButtonText>
         </ButtonSubmit>
-        <InfoButton />
+        <InfoButton data-tip="Приветки, ДРУГ" />
         <BottomText>
           Правильный формат книжного обмена, hackathon 2018
         </BottomText>
       </InnerContainer>
+      <ReactTooltip />
     </Wrapper>
   );
 };
