@@ -32,6 +32,18 @@ const Controls = styled.div`
   align-items: center;
 `;
 
+const BookTitle = styled.p`
+  font-size: 16px;
+  color: #fff;
+  margin: 10px 0;
+`;
+
+const BookAuthors = styled.p`
+  font-size: 14px;
+  color: #92979f;
+  margin: 0;
+`;
+
 const ButtonAddBook = styled.button`
   width: 260px;
   height: 50px;
@@ -50,7 +62,10 @@ export const BookSelected = ({
   <Fragment>
     <Wrapper>
       <BookImage>
-        <img src={book.imageLinks.thumbnail} alt="" />
+        <img src={book.imageLinks && book.imageLinks.thumbnail} alt="" />
+        <BookTitle>{book.title}</BookTitle>
+        {book.authors &&
+          book.authors.map(author => <BookAuthors>{author}</BookAuthors>)}
       </BookImage>
       {book.description && (
         <BookDescription>
