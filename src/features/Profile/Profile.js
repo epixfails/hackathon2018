@@ -28,8 +28,6 @@ const UserName = styled.p`
   font-size: 20px;
 `;
 
-const FriendsList = styled.div``;
-
 const UserLink = styled.a`
   display: block;
   font-size: 18px;
@@ -63,7 +61,6 @@ export class Profile extends Component {
             </UserLink>
           </UserInfo>
         </MainInfo>
-        <FriendsList>Друзья в приложении</FriendsList>
       </Wrapper>
     );
   }

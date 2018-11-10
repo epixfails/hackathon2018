@@ -110,7 +110,9 @@ export const Auth = props => {
         <LogoBackgroundPicWrapper>
           <LogoBackgroundPic src="img/logo_background.svg" />
         </LogoBackgroundPicWrapper>
-        <ButtonSubmit onClick={() => redirect('http://bookex.ru/server/login')}>
+        <ButtonSubmit
+          onClick={() => redirect('http://95.213.28.133/server/login')}
+        >
           <img src="img/vk_logo.svg" alt="" />
           <ButtonText>Войти через vk</ButtonText>
         </ButtonSubmit>
